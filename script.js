@@ -1,14 +1,21 @@
-var c = document.getElementById("canvas")
-var context = myCanvas.getContext("2d");
-var text = [];
+const gridContainer = document.getElementById("grid-container")
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
 
+var numOfRows = Math.floor (screenHeight / 12);
+var numOfColumns = Math.floor(screenWidth / 12);
 
-function getRandomNum(min, max) 
+for(let x = 0; x < numOfRows*numOfColumns; x++)
 {
-    max = Math.floor
-    min = Math.ceil
-    Math.floor(Math.random)
+    const gridItem = document.createElement("div");
+    gridItem.classList.add("grid-item");
+    gridItem.innerText = getRandomCharacter();
+    gridContainer.appendChild(gridItem);
 }
 
-context.font = "48px consolas";
-context.strokeText("Test",20,50);
+function getRandomCharacter()
+{
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    return characters.charAt(Math.floor(Math.random()*characters.length));
+}
