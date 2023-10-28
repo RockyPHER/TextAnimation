@@ -1,16 +1,16 @@
-const gridContainer = document.getElementById("grid-container")
-const screenWidth = window.innerWidth;
-const screenHeight = window.innerHeight;
+const canvas = document.getElementById("Screen");
+const context = canvas.getContext("2d");
+const Width = canvas.innerWidth;
+const Height = canvas.innerHeight;
 
-var numOfRows = Math.floor (screenHeight / 12);
-var numOfColumns = Math.floor(screenWidth / 12);
+var fontSize = 12;
+
+var numOfRows = Math.floor(screenHeight / fontSize);
+var numOfColumns = Math.floor(screenWidth / fontSize);
 
 for(let x = 0; x < numOfRows*numOfColumns; x++)
 {
-    const gridItem = document.createElement("div");
-    gridItem.classList.add("grid-item");
-    gridItem.innerText = getRandomCharacter();
-    gridContainer.appendChild(gridItem);
+
 }
 
 function getRandomCharacter()
