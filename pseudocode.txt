@@ -1,0 +1,10 @@
+Final result:
+    Grid with changing characters that dissapear resting only the characters of the phrase. 
+
+What i need:
+   - Grid that fills all the screen.
+   - Random Sorting characters for each block of the grid.
+   - Final characters of the phrase.
+
+- [] Create Grid
+- [] Create characters
