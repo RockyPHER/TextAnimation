@@ -52,7 +52,7 @@ function createEffect(e)
     const source = e.target || e.srcElement;
     source.innerHTML = getRandomCharacter();
 
-    var duration = 100;
+    var duration = 300;
 
     const [yStr, xStr] = source.id.split('-');
     const y = parseInt(yStr);
@@ -62,23 +62,41 @@ function createEffect(e)
         updateChar(getRandomCharacter(), id);
         setTimeout(() => {
             updateChar('.', id);
-        }, duration*10)
+        }, duration*5)
     }
 
     setTimeout(() => {
         var k = 1;
+        var maxK = 5;
+
         source.innerHTML = '.'
+        // +
         var top = () => (y-k)+'-'+x;
         var bottom = () => (y+k)+'-'+x; 
         var left = () => y+'-'+(x-k);
         var right = () => y+'-'+(x+k);
+        // X
+        var topLeft = () => (y+k)+'-'+(x-k);
+        var topRight = () => (y+k)+'-'+(x+k);
+        var bottomLeft = () => (y-k)+'-'+(x-k);
+        var bottomRight = () => (y-k)+'-'+(x+k); 
 
         setInterval(() => {
             doAnimAndClearAfter(top());
             doAnimAndClearAfter(bottom());
             doAnimAndClearAfter(left());
             doAnimAndClearAfter(right());
+            doAnimAndClearAfter(topLeft());
+            doAnimAndClearAfter(topRight());
+            doAnimAndClearAfter(bottomLeft());
+            doAnimAndClearAfter(bottomRight());
+            
+            if (k === maxK){
+                clearInterval();
+            }
+
             k++;
+            
         }, duration)
     }, duration)
 
