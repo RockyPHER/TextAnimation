@@ -8,8 +8,8 @@ function getRandomCharacter()
 }
 
 const parent = document.getElementById("screen");
-const columns = 60;
-const lines = 30;
+const columns = (window.innerWidth/11)-12;
+const lines = (window.innerHeight/11)-8;
 
 for(y = 0; y <= lines; y++)
 {
@@ -52,7 +52,7 @@ function createEffect(e)
     const source = e.target || e.srcElement;
     source.innerHTML = getRandomCharacter();
 
-    var duration = 300;
+    var duration = 40;
 
     const [yStr, xStr] = source.id.split('-');
     const y = parseInt(yStr);
@@ -67,21 +67,23 @@ function createEffect(e)
 
     setTimeout(() => {
         var k = 1;
-        var maxK = 5;
+        var maxK = 3;
+
+        var j = k*2;
 
         source.innerHTML = '.'
         // +
-        var top = () => (y-k)+'-'+x;
-        var bottom = () => (y+k)+'-'+x; 
-        var left = () => y+'-'+(x-k);
-        var right = () => y+'-'+(x+k);
-        // X
+        var top = () => (y-j)+'-'+x;
+        var bottom = () => (y+j)+'-'+x; 
+        var left = () => y+'-'+(x-j);
+        var right = () => y+'-'+(x+j);
+        // x
         var topLeft = () => (y+k)+'-'+(x-k);
         var topRight = () => (y+k)+'-'+(x+k);
         var bottomLeft = () => (y-k)+'-'+(x-k);
         var bottomRight = () => (y-k)+'-'+(x+k); 
 
-        setInterval(() => {
+        const animInterval = setInterval(() => {
             doAnimAndClearAfter(top());
             doAnimAndClearAfter(bottom());
             doAnimAndClearAfter(left());
@@ -92,10 +94,11 @@ function createEffect(e)
             doAnimAndClearAfter(bottomRight());
             
             if (k === maxK){
-                clearInterval();
+                clearInterval(animInterval);
             }
 
             k++;
+            j++;
             
         }, duration)
     }, duration)
