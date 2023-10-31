@@ -1,2 +1,2 @@
 # Animation with text
-[![Link](./animDemo.gif))]()
+[![Link](./animDemo.gif)]()
